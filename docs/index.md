@@ -1,10 +1,10 @@
 <h1 align = "center">RS-CNN: Relation-Shape Convolutional Neural Network for Point Cloud Analysis</h1>
 <p align = "center">
-    <a href="https://yochengliu.github.io/"><font size=5>Yongcheng Liu</font></a>
+    <a href="https://yochengliu.github.io/" style="font-size: 20px">Yongcheng Liu</a>
 </p>
 <br>
 <p align = "center">
-    <font size=5>[__CVPR 2019__](http://cvpr2019.thecvf.com/)</font><font size=5 color=#FF4500> __Oral Presentation__</font>
+    <a href="http://cvpr2019.thecvf.com/" style="font-size: 20px"><strong>CVPR 2019</strong></a> ) <font color="red"><strong>Oral Presentation</strong></font>
 </p>
 <br>
 
