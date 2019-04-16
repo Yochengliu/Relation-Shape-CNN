@@ -7,7 +7,7 @@
 </p>
 <p align = "center">
     <a href="http://cvpr2019.thecvf.com/" style="font-size: 23px"><strong>CVPR 2019</strong></a> &emsp;
-    <a font color="red" style="font-size: 23px"><strong>Oral Presentation</strong></a>
+    <font color="red" size="23px"><strong>Oral Presentation</strong></font>
 </p>
 <br>
 
