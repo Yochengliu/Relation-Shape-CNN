@@ -6,8 +6,8 @@
     <a href="http://people.ucas.ac.cn/~0005314" style="font-size: 23px">Chunhong Pan</a>
 </p>
 <p align = "center">
-    <a href="http://cvpr2019.thecvf.com/" style="font-size: 25px"><strong>CVPR 2019</strong></a> &emsp;
-    <a font color="red" style="font-size: 25px"><strong>Oral Presentation</strong></a>
+    <a href="http://cvpr2019.thecvf.com/" style="font-size: 23px"><strong>CVPR 2019</strong></a> &emsp;
+    <a font color="red" style="font-size: 23px"><strong>Oral Presentation</strong></a>
 </p>
 <br>
 
