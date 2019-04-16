@@ -1,13 +1,13 @@
-<h1 align = "center">RS-CNN: Relation-Shape Convolutional Neural Network for Point Cloud Analysis</h1>
+<h1 align = "center">Relation-Shape Convolutional Neural Network for Point Cloud Analysis</h1>
 <p align = "center">
-    <a href="https://yochengliu.github.io/" style="font-size: 30px">Yongcheng Liu</a>
-    <a href="http://www.nlpr.ia.ac.cn/fanbin/" style="font-size: 30px">Bin Fan</a>
-    <a href="https://scholar.google.com/citations?user=0ggsACEAAAAJ&hl=zh-CN" style="font-size: 30px">Shiming Xiang</a>
-    <a href="http://people.ucas.ac.cn/~0005314" style="font-size: 30px">Chunhong Pan</a>
+    <a href="https://yochengliu.github.io/" style="font-size: 23px">Yongcheng Liu</a> &emsp;&emsp;
+    <a href="http://www.nlpr.ia.ac.cn/fanbin/" style="font-size: 23px">Bin Fan</a> &emsp;&emsp;
+    <a href="https://scholar.google.com/citations?user=0ggsACEAAAAJ&hl=zh-CN" style="font-size: 23px">Shiming Xiang</a>  &emsp;&emsp;
+    <a href="http://people.ucas.ac.cn/~0005314" style="font-size: 23px">Chunhong Pan</a>
 </p>
-<br>
 <p align = "center">
-    <a href="http://cvpr2019.thecvf.com/" style="font-size: 30px"><strong>CVPR 2019</strong></a> <font color="red" font-size: 30px><strong>Oral Presentation</strong></font>
+    <a href="http://cvpr2019.thecvf.com/" style="font-size: 25px"><strong>CVPR 2019</strong></a> &emsp;
+    <a font color="red" style="font-size: 25px"><strong>Oral Presentation</strong></a>
 </p>
 <br>
 
