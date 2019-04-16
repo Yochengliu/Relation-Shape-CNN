@@ -1,4 +1,5 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>   
+
 <h1 align = "center">Relation-Shape Convolutional Neural Network for Point Cloud Analysis</h1>
 <p align = "center">
     <a href="https://yochengliu.github.io/" style="font-size: 23px">Yongcheng Liu</a> &emsp;&emsp;
@@ -34,7 +35,7 @@ Point cloud analysis is very challenging, as the shape implied in irregular poin
 
 - CNN has demonstrated its powerful visual abstraction capability for 2D images that are in a regular grid format.
 
-- Extending 2D grid CNN to 3D irregular configuration to learn high-level geometric relation encoding from local to global.
+- Extending 2D grid CNN to 3D irregular configuration for point cloud analysis, by learning high-level geometric relation encoding from local to global.
 
 # RS-Conv: Relation-Shape Convolution
 
@@ -48,9 +49,9 @@ In this paper, we develop a hierarchical CNN-like architecture, _i.e._ RS-CNN, e
 
 Specifically:
 
-- The convolutional weight for $x_{j}$ is converted to ${\bm{\mathrm w}}_{ij}$, which learns a high-level mapping $\mathcal{M}$ (Eq.~\eqref{Eq2:transform_relation}) on predefined geometric relation vector ${\bm{\mathrm h}}_{ij}$..
+- The convolutional weight for \\(x_{j}\\) is converted to \\({\bm{\mathrm w}}_{ij}\\), which learns a high-level mapping \\(\mathcal{M}\\) (Eq.~\eqref{Eq2:transform_relation}) on predefined geometric relation vector \\({\bm{\mathrm h}}_{ij}\\).
 
-- In this way, the inductive convolutional representation $\sigma \big( \mathcal{A}(\{{\bm{\mathrm w}}_{ij} \cdot {\bm{\mathrm f}}_{x_j}, \hspace{0.1pt} \forall x_j\}) \big)$ (Eq.~\eqref{Eq3:graph_relation}) can expressively reason the spatial layout of points, resulting in discriminative shape awareness.
+- In this way, the inductive convolutional representation \\(\sigma \big( \mathcal{A}(\{{\bm{\mathrm w}}_{ij} \cdot {\bm{\mathrm f}}_{x_j}, \hspace{0.1pt} \forall x_j\}) \big)\\) (Eq.~\eqref{Eq3:graph_relation}) can expressively reason the spatial layout of points, resulting in discriminative shape awareness.
 
 - As in image CNN, further channel-raising mapping is conducted for a more powerful shape-aware representation.
 
