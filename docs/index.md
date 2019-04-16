@@ -1,8 +1,7 @@
-<h1 align = "center">RS-CNN: Relation-Shape Convolutional Neural Network for Point Cloud Analysis</h1>   
-===
-<font size=5 ><h2 align = "center">[Yongcheng Liu](https://yochengliu.github.io/), [Bin Fan](http://www.nlpr.ia.ac.cn/fanbin/), [Shiming Xiang](https://scholar.google.com/citations?user=0ggsACEAAAAJ&hl=zh-CN) and [Chunhong Pan](http://people.ucas.ac.cn/~0005314)</h2></font>
+<h1 align = "center">RS-CNN: Relation-Shape Convolutional Neural Network for Point Cloud Analysis</h1>
+<h2 align = "center">[Yongcheng Liu](https://yochengliu.github.io/), [Bin Fan](http://www.nlpr.ia.ac.cn/fanbin/), [Shiming Xiang](https://scholar.google.com/citations?user=0ggsACEAAAAJ&hl=zh-CN) and [Chunhong Pan](http://people.ucas.ac.cn/~0005314)</h2>
 <br>
-<font size=5><h2 align = "center">[__CVPR 2019__](http://cvpr2019.thecvf.com/)</font><font size=5 color=#FF4500> __Oral Presentation__</h2></font>
+<h2 align = "center">[__CVPR 2019__](http://cvpr2019.thecvf.com/)</font><font size=5 color=#FF4500> __Oral Presentation__</h2>
 <br>
 
 [partseg_results]: ./images/partseg.jpg
