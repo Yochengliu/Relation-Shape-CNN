@@ -50,11 +50,11 @@ Specifically:
 
 - The convolutional weight for \\(x_{j}\\) is converted to \\({\bm{\mathrm w}}_{ij}\\), which learns a high-level mapping \\(\mathcal{M}\\) (\\({\bm{\mathrm w}}_{ij}=\mathcal{M}({\bm{\mathrm h}}_{ij})\\),) on predefined geometric relation vector \\({\bm{\mathrm h}}_{ij}\\).
 
-- In this way, the inductive convolutional representation \\(\sigma \big( \mathcal{A}(\{{\bm{\mathrm w}}_{ij} \cdot {\bm{\mathrm f}}_{x_j}, \hspace{0.1pt} \forall x_j\}) \big)\\) (Eq.~\eqref{Eq3:graph_relation}) can expressively reason the spatial layout of points, resulting in discriminative shape awareness.
+- In this way, the inductive convolutional representation <img src="http://www.sciweavers.org/tex2img.php?eq=%5Csigma%20%5Cbig%28%20%5Cmathcal%7BA%7D%28%5C%7B%7B%5Cbm%7B%5Cmathrm%20w%7D%7D_%7Bij%7D%20%5Ccdot%20%7B%5Cbm%7B%5Cmathrm%20f%7D%7D_%7Bx_j%7D%2C%20%5Chspace%7B0.1pt%7D%20%5Cforall%20x_j%5C%7D%29%20%5Cbig%29&bc=White&fc=Black&im=jpg&fs=18&ff=modern&edit=0" align="center" border="0" alt="\sigma \big( \mathcal{A}(\{{\bm{\mathrm w}}_{ij} \cdot {\bm{\mathrm f}}_{x_j}, \hspace{0.1pt} \forall x_j\}) \big)" width="231" height="33" /> can expressively reason the spatial layout of points, resulting in discriminative shape awareness.
 
 - As in image CNN, further channel-raising mapping is conducted for a more powerful shape-aware representation.
 
-# Ablation Study
+# Revisiting 2D Grid Convolution
 
 ### Overall Ablation
 
