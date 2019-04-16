@@ -13,11 +13,10 @@ baseurl: ""
 
 # Of course don't forget to change the username and projectname to YOUR username and project
 
-# Name of website
-title: My website
-
-# Short description of your site
-description: A virtual proof that name is awesome!
+theme: jekyll-theme-cayman
+title: Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection
+description: Yongcheng Liu, Lu Sheng, Jing Shao, Junjie Yan, Shiming Xiang, Chunhong Pan
+show_downloads: true
 
 # --- Navigation bar options --- #
 
