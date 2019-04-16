@@ -1,6 +1,6 @@
 <h1 align = "center">RS-CNN: Relation-Shape Convolutional Neural Network for Point Cloud Analysis</h1>
 <p align = "center">
-    <font size=5><a href="https://yochengliu.github.io/">Yongcheng Liu</a></font>
+    <a href="https://yochengliu.github.io/"><font size=5>Yongcheng Liu</font></a>
 </p>
 <br>
 <p align = "center">
@@ -32,10 +32,10 @@ Point cloud analysis is very challenging, as the shape implied in irregular poin
 
 - Therefore, the localization results of WSD could provide ___object-relevant semantic regions___ while its image-level predictions could naturally capture ___the latent class dependencies___. These unique advantages are very useful for the MLIC task.
 
-# Framework
+# RS-Conv: Relation-Shape Convolution
 
-[framework]: ./images/framework.png
-![framework]
+[rsconv]: ./images/rsconv.jpg
+![rsconv]
 <p align = 'center'>
 <small>The proposed framework works with two steps: (1) we first develop a WSD model as teacher model (called T-WDet) with only image-level annotations y; (2) then the knowledge in T-WDet is distilled into the MLIC student model (called S-Cls) via feature-level distillation from RoIs and prediction-level distillation from the whole image, where the former is conducted by optimizing the loss in Eq. (3) while the latter is conducted by optimizing the losses in Eq. (5) and Eq. (10). </small>
 </p>
