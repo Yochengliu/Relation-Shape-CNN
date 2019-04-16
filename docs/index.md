@@ -1,3 +1,4 @@
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 <h1 align = "center">Relation-Shape Convolutional Neural Network for Point Cloud Analysis</h1>
 <p align = "center">
     <a href="https://yochengliu.github.io/" style="font-size: 23px">Yongcheng Liu</a> &emsp;&emsp;
@@ -7,7 +8,7 @@
 </p>
 <p align = "center">
     <a href="http://cvpr2019.thecvf.com/" style="font-size: 23px"><strong>CVPR 2019</strong></a> &emsp;
-    <font color="red" size="23px"><strong>Oral Presentation</strong></font>
+    <font color="red" size="5"><strong>Oral Presentation</strong></font>
 </p>
 <br>
 
@@ -26,34 +27,32 @@ Point cloud analysis is very challenging, as the shape implied in irregular poin
 [motivation]: ./images/motivation.jpg
 ![motivation]
 <p align = 'center'>
-<small>Correct predictions are shown in blue and incorrect in red.</small>
+<small>Left part: 3D Point cloud. Right part: Underlying shape formed by this point cloud.</small>
 </p>
 
-- The MLIC model might not predict well due to the lack of ___object-level feature extraction___ and ___localization for multiple semantic instances___.
+- The geometric relation among points is an explicit expression about the spatial layout of points, further discriminatively reflecting the underlying shape.
 
-- Although the results detected by WSD may not preserve object boundaries well, they tend to ___locate the semantic regions___ which are ___informative for classifying the target object___, such that the predictions can still be improved.
+- CNN has demonstrated its powerful visual abstraction capability for 2D images that are in a regular grid format.
 
-- Therefore, the localization results of WSD could provide ___object-relevant semantic regions___ while its image-level predictions could naturally capture ___the latent class dependencies___. These unique advantages are very useful for the MLIC task.
+- Extending 2D grid CNN to 3D irregular configuration to learn high-level geometric relation encoding from local to global.
 
 # RS-Conv: Relation-Shape Convolution
 
 [rsconv]: ./images/rsconv.jpg
 ![rsconv]
 <p align = 'center'>
-<small>The proposed framework works with two steps: (1) we first develop a WSD model as teacher model (called T-WDet) with only image-level annotations y; (2) then the knowledge in T-WDet is distilled into the MLIC student model (called S-Cls) via feature-level distillation from RoIs and prediction-level distillation from the whole image, where the former is conducted by optimizing the loss in Eq. (3) while the latter is conducted by optimizing the losses in Eq. (5) and Eq. (10). </small>
+<small> Overview of our relation-shape convolution (RS-Conv). </small>
 </p>
 
-In this paper, we propose a novel and efficient deep framework to boost MLIC by ___distilling the unique knowledge from WSD into classification with only image-level annotations___.
+In this paper, we develop a hierarchical CNN-like architecture, _i.e._ RS-CNN, equipped with a novel learn-from-relation convolution operator called relation-shape convolution (RS-Conv). As illustrated in the figure, the key to RS-CNN is learning from relation.
 
-Specifically, our framework works with ___two steps___:
+Specifically:
 
-- __(1)__ we first develop a WSD model with image-level annotations; 
-- __(2)__ then we construct an ___end-to-end knowledge distillation framework___ by propagating the ___class-level holistic predictions___ and ___the object-level features from RoIs___ in the WSD model to the MLIC model, where the WSD model is taken as the teacher model (called __T-WDet__) and the classification model is the student model (called __S-Cls__).
+- The convolutional weight for $x_{j}$ is converted to ${\bm{\mathrm w}}_{ij}$, which learns a high-level mapping $\mathcal{M}$ (Eq.~\eqref{Eq2:transform_relation}) on predefined geometric relation vector ${\bm{\mathrm h}}_{ij}$..
 
+- In this way, the inductive convolutional representation $\sigma \big( \mathcal{A}(\{{\bm{\mathrm w}}_{ij} \cdot {\bm{\mathrm f}}_{x_j}, \hspace{0.1pt} \forall x_j\}) \big)$ (Eq.~\eqref{Eq3:graph_relation}) can expressively reason the spatial layout of points, resulting in discriminative shape awareness.
 
-- The distillation of object-level features from RoIs focuses on ___perceiving localizations of semantic regions___ detected by the WSD model while the distillation of class-level holistic predictions aims at ___capturing class dependencies___ predicted by the WSD model.
-
-- After this distillation, the classification model could be significantly improved and ___no longer need the WSD model___, thus resulting in ___high efficiency___ in test phase. More details can be referred in the paper.
+- As in image CNN, further channel-raising mapping is conducted for a more powerful shape-aware representation.
 
 # Ablation Study
 
