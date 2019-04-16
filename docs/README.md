@@ -1,23 +1,19 @@
-Relation-Shape Convolutional Neural Network for Point Cloud Analysis
+<h1 align = "center">RS-CNN: Relation-Shape Convolutional Neural Network for Point Cloud Analysis</h1>
 ===
-This repository contains the code (__comming soon__) in Pytorch for the paper:
-
-__Relation-Shape Convolutional Neural Network for Point Cloud Analysis__ ([arXiv](kkkkkk))
+<p align = "center"><font size=5>[Yongcheng Liu](https://yochengliu.github.io/), [Bin Fan](http://www.nlpr.ia.ac.cn/fanbin/), [Shiming Xiang](https://scholar.google.com/citations?user=0ggsACEAAAAJ&hl=zh-CN) and [Chunhong Pan](http://people.ucas.ac.cn/~0005314)</font></p>
 <br>
-[Yongcheng Liu](https://yochengliu.github.io/), [Bin Fan](http://www.nlpr.ia.ac.cn/fanbin/), [Shiming Xiang](https://scholar.google.com/citations?user=0ggsACEAAAAJ&hl=zh-CN) and [Chunhong Pan](http://people.ucas.ac.cn/~0005314)
+<p align = "center"><font size=5>[__CVPR 2019__](http://cvpr2019.thecvf.com/)</font><font size=5 color=#FF4500> __Oral Presentation__</font></p>
 <br>
-[__CVPR 2019 Oral__](http://cvpr2019.thecvf.com/) &nbsp;&nbsp;&nbsp; __Project Page__: [https://yochengliu.github.io/Relation-Shape-CNN/](https://yochengliu.github.io/Relation-Shape-CNN/)
 
-
-[example_results]: ./images/partseg.jpg
-![example_results]
+[partseg_results]: ./images/partseg.jpg
+![partseg_results]
 <p align = 'center'>
-    <small>Example results on MS-COCO and NUS-WIDE "with" and "without" knowledge distillation using our proposed framework. The texts on the right are the top-3 predictions, where correct ones are shown in blue and incorrect in red. The green bounding boxes in images are the top-10 proposals detected by the weakly-supervised detection model.</small>
+    <font size=3>Segmentation examples on ShapeNet part benchmark. Although the part shapes implied in irregular points are extremely diverse and they may be very confusing to recognize, our RS-CNN can also segment them out with decent accuracy.</font>
 </p>
 
 # Abstract   
 
-Multi-label image classification (__MLIC__) is a fundamental but challenging task towards general visual understanding. Existing methods found the region-level cues (e.g., features from RoIs) can facilitate multi-label classification. Nevertheless, such methods usually require laborious object-level annotations (i.e., object labels and bounding boxes) for effective learning of the object-level visual features. In this paper, we propose a novel and efficient deep framework to boost multi-label classification by distilling knowledge from weakly-supervised detection task ___without bounding box annotations___. Specifically, given the image-level annotations, __(1)__ we first develop a weakly-supervised detection (__WSD__) model, and then __(2)__ construct an end-to-end multi-label image classification framework augmented by a knowledge distillation module that guides the classification model by the WSD model according to the class-level predictions for the whole image and the object-level visual features for object RoIs. The WSD model is the ___teacher___ model and the classification model is the ___student___ model. After this ___cross-task knowledge distillation___, the performance of the classification model is significantly improved and the efficiency is maintained since the WSD model can be safely discarded in the test phase. Extensive experiments on two large-scale datasets (MS-COCO and NUS-WIDE) show that our framework achieves superior performances over the state-of-the-art methods on both performance and efficiency.
+<font size=4>Point cloud analysis is very challenging, as the shape implied in irregular points is difficult to capture. In this paper, we propose RS-CNN, namely, Relation-Shape Convolutional Neural Network, which extends regular grid CNN to irregular configuration for point cloud analysis. The key to RS-CNN is learning from relation, i.e., the geometric topology constraint among points. Specifically, the convolutional weight for local point set is forced to learn a high-level relation expression from predefined geometric priors, between a sampled point from this point set and the others. In this way, an inductive local representation with explicit reasoning about the spatial layout of points can be obtained, which leads to much shape awareness and robustness. With this convolution as a basic operator, RS-CNN, a hierarchical architecture can be developed to achieve contextual shape-aware learning for point cloud analysis. Extensive experiments on challenging benchmarks across three tasks verify RS-CNN achieves the state of the arts.</font>
 
 # Motivation
 
