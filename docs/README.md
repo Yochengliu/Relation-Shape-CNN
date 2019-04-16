@@ -1,5 +1,4 @@
 <h1 align = "center">RS-CNN: Relation-Shape Convolutional Neural Network for Point Cloud Analysis</h1>
-===
 <p align = "center"><font size=5>[Yongcheng Liu](https://yochengliu.github.io/), [Bin Fan](http://www.nlpr.ia.ac.cn/fanbin/), [Shiming Xiang](https://scholar.google.com/citations?user=0ggsACEAAAAJ&hl=zh-CN) and [Chunhong Pan](http://people.ucas.ac.cn/~0005314)</font></p>
 <br>
 <p align = "center"><font size=5>[__CVPR 2019__](http://cvpr2019.thecvf.com/)</font><font size=5 color=#FF4500> __Oral Presentation__</font></p>
