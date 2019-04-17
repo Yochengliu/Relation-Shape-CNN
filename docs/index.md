@@ -49,9 +49,9 @@ In this paper, we develop a hierarchical CNN-like architecture, _i.e._ RS-CNN, e
 
 To be specific:
 
-- The convolutional weight <img src="maths/w_strong.png" align="center" border="0" weight="20%" height="20%" alt="{\bm{\mathrm w}}_j" /> for <img src="http://www.sciweavers.org/tex2img.php?eq=x_%7Bj%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="x_{j}" width="27" height="21" /> is converted to <img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20w%7D%7D_%7Bij%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}" width="37" height="21" />, which learns a high-level mapping <img src="http://www.sciweavers.org/tex2img.php?eq=%5Cmathcal%7BM%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="\mathcal{M}" width="37" height="21" /> (<img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20w%7D%7D_%7Bij%7D%3D%5Cmathcal%7BM%7D%28%7B%5Cbm%7B%5Cmathrm%20h%7D%7D_%7Bij%7D%29&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}=\mathcal{M}({\bm{\mathrm h}}_{ij})" width="148" height="29" />) on predefined geometric relation vector <img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20h%7D%7D_%7Bij%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm h}}_{ij}" width="33" height="27" />.
+- The convolutional weight <img src="maths/w_strong.png" align="center" border="0" weight="31" height="21" alt="{\bm{\mathrm w}}_j" /> for <img src="maths/xj.png" align="center" border="0" alt="x_{j}" width="27" height="21" /> is converted to <img src="maths/wij.png" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}" width="37" height="21" />, which learns a high-level mapping <img src="maths/m.png" align="center" border="0" alt="\mathcal{M}" width="37" height="21" /> (<img src="maths/wijm.png" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}=\mathcal{M}({\bm{\mathrm h}}_{ij})" width="148" height="29" />) on predefined geometric relation vector <img src="maths/hij.png" align="center" border="0" alt="{\bm{\mathrm h}}_{ij}" width="33" height="27" />.
 
-- In this way, the inductive convolutional representation <img src="maths/conv.png" align="center" border="0" weight="20%" height="20%"  alt=""/> can expressively reason the spatial layout of points, resulting in discriminative shape awareness.
+- In this way, the inductive convolutional representation <img src="maths/conv.png" align="center" border="0" weight="154" height="22"  alt="\sigma \big( \mathcal{A}(\{{\bm{\mathrm w}}_{ij} \cdot {\bm{\mathrm f}}_{x_j}, \hspace{0.1pt} \forall x_j\}) \big)"/> can expressively reason the spatial layout of points, resulting in discriminative shape awareness.
 
 - As in image CNN, further channel-raising mapping is conducted for a more powerful shape-aware representation.
 
@@ -73,7 +73,7 @@ To be specific:
 ### Shape Classification on ModelNet40 Benchmark
 
 <div align="center">
-    <img src="images/cls.jpg" width="70%" height ="70%" alt="cls.jpg" />
+    <img src="images/cls.jpg" width="60%" height ="60%" alt="cls.jpg" />
 </div>
 <p align = 'center'>
 <small> Shape classification results (%). Our RS-CNN outperforms the state of the arts with only <img src="http://www.sciweavers.org/tex2img.php?eq=%5Cmathrm%7Bxyz%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="\mathrm{xyz}" width="42" height="19" /> as the input features. </small>
@@ -81,8 +81,9 @@ To be specific:
 
 ### Normal Estimation
 
-[normal]: ./images/normal.jpg
-![normal]
+<div align="center">
+    <img src="images/normal.jpg" width="80%" height ="80%" alt="normal.jpg" />
+</div>
 <p align = 'center'>
 <small> Normal estimation examples. For clearness, we only show predictions with angle less than 30 degree in blue, and angle greater than 90 degree in red between the ground truth normals. </small>
 </p>
