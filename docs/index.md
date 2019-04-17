@@ -1,4 +1,3 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 <h1 align = "center">Relation-Shape Convolutional Neural Network for Point Cloud Analysis</h1>
 <p align = "center">
     <a href="https://yochengliu.github.io/" style="font-size: 23px">Yongcheng Liu</a> &emsp;&emsp;
@@ -26,7 +25,7 @@ Point cloud analysis is very challenging, as the shape implied in irregular poin
 <h2 align = "center">Motivation</h2> 
 
 <div align="center">
-    <img src="images/motivation.jpg" width="70%" height ="70%" alt="motivation.jpg" />
+    <img src="images/motivation.jpg" width="60%" height ="60%" alt="motivation.jpg" />
 </div>
 <p align = 'center'>
     <small>Left part: 3D Point cloud. Right part: Underlying shape formed by this point cloud.</small>
@@ -50,16 +49,17 @@ In this paper, we develop a hierarchical CNN-like architecture, _i.e._ RS-CNN, e
 
 To be specific:
 
-- The convolutional weight <img src="maths/w_strong.png" align="center" border="0" alt="{\bm{\mathrm w}}_j" /> for <img src="http://www.sciweavers.org/tex2img.php?eq=x_%7Bj%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="x_{j}" width="27" height="21" /> is converted to <img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20w%7D%7D_%7Bij%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}" width="37" height="21" />, which learns a high-level mapping <img src="http://www.sciweavers.org/tex2img.php?eq=%5Cmathcal%7BM%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="\mathcal{M}" width="37" height="21" /> (<img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20w%7D%7D_%7Bij%7D%3D%5Cmathcal%7BM%7D%28%7B%5Cbm%7B%5Cmathrm%20h%7D%7D_%7Bij%7D%29&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}=\mathcal{M}({\bm{\mathrm h}}_{ij})" width="148" height="29" />) on predefined geometric relation vector <img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20h%7D%7D_%7Bij%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm h}}_{ij}" width="33" height="27" />.
+- The convolutional weight <img src="maths/w_strong.png" align="center" border="0" weight="50%" height="50%" alt="{\bm{\mathrm w}}_j" /> for <img src="http://www.sciweavers.org/tex2img.php?eq=x_%7Bj%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="x_{j}" width="27" height="21" /> is converted to <img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20w%7D%7D_%7Bij%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}" width="37" height="21" />, which learns a high-level mapping <img src="http://www.sciweavers.org/tex2img.php?eq=%5Cmathcal%7BM%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="\mathcal{M}" width="37" height="21" /> (<img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20w%7D%7D_%7Bij%7D%3D%5Cmathcal%7BM%7D%28%7B%5Cbm%7B%5Cmathrm%20h%7D%7D_%7Bij%7D%29&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}=\mathcal{M}({\bm{\mathrm h}}_{ij})" width="148" height="29" />) on predefined geometric relation vector <img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20h%7D%7D_%7Bij%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm h}}_{ij}" width="33" height="27" />.
 
-- In this way, the inductive convolutional representation <img src="maths/conv.png" align="center" border="0" alt=""/> can expressively reason the spatial layout of points, resulting in discriminative shape awareness.
+- In this way, the inductive convolutional representation <img src="maths/conv.png" align="center" border="0" weight="50%" height="50%"  alt=""/> can expressively reason the spatial layout of points, resulting in discriminative shape awareness.
 
 - As in image CNN, further channel-raising mapping is conducted for a more powerful shape-aware representation.
 
 <h2 align = "center">Revisiting 2D Grid Convolution</h2>
 
-[2dconv]: ./images/2dconv.jpg
-![2dconv]
+<div align="center">
+    <img src="images/2dconv.jpg" width="60%" height ="60%" alt="2dconv.jpg" />
+</div>
 <p align = 'center'>
 <small> Illustration of 2D grid convolution with a kernel of 3 x 3. </small>
 </p>
