@@ -115,7 +115,7 @@ To be specific:
 
 # Code
 
-Please refer to the [GitHub repository](https://github.com/Yochengliu/MLIC-KD-WSD) for more details. 
+Please refer to the [GitHub repository](https://github.com/Yochengliu/Relation-Shape-CNN) for more details. 
 
 # Publication
 
@@ -124,9 +124,9 @@ Yongcheng Liu, Bin Fan, Shiming Xiang and Chunhong Pan, "Relation-Shape Convolut
 ```
         @inproceedings{liu2019rscnn,   
             author = {Yongcheng Liu and    
-                    Bin Fan and    
-                    Shiming Xiang and   
-                    Chunhong Pan},   
+                            Bin Fan and    
+                      Shiming Xiang and   
+                           Chunhong Pan},   
             title = {Relation-Shape Convolutional Neural Network for Point Cloud Analysis},   
             booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},    
             pages = {1--10},  
