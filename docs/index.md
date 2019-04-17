@@ -79,7 +79,7 @@ To be specific:
 <small> Shape classification results (%) (nor: normal). </small>
 </p>
 
-- Our RS-CNN outperforms the state-of-the-art point cloud-based methods with only <img src="maths/xyz.png" align="center" border="0" alt="\mathrm{xyz}" width="25" height="15" /> as the input features. 
+- Our RS-CNN outperforms the state-of-the-art point cloud-based methods with only <img src="maths/xyz.png" align="center" border="0" alt="\mathrm{xyz}" width="29" height="14" /> as the input features. 
 
 ### Normal Estimation
 
