@@ -20,7 +20,7 @@
 
 <h1 align = "center">Abstract</h1> 
 
-Point cloud analysis is very challenging, as the shape implied in irregular points is difficult to capture. In this paper, we propose RS-CNN, namely, Relation-Shape Convolutional Neural Network, which extends regular grid CNN to irregular configuration for point cloud analysis. ___The key to RS-CNN is learning from relation___, i.e., the geometric topology constraint among points. Specifically, the convolutional weight for local point set is forced to ___learn a high-level relation expression from predefined geometric priors___, between a sampled point from this point set and the others. In this way, an inductive local representation with ___explicit reasoning about the spatial layout of points___ can be obtained, which leads to much shape awareness and robustness. With this convolution as a basic operator, RS-CNN, a hierarchical architecture can be developed to achieve contextual shape-aware learning for point cloud analysis. Extensive experiments on challenging benchmarks across three tasks verify RS-CNN achieves the state of the arts.
+Point cloud analysis is very challenging, as the shape implied in irregular points is difficult to capture. In this paper, we propose RS-CNN, namely, Relation-Shape Convolutional Neural Network, which extends regular grid CNN to irregular configuration for point cloud analysis. ___The key to RS-CNN is learning from relation___, _i.e._, the geometric topology constraint among points. Specifically, the convolutional weight for local point set is forced to ___learn a high-level relation expression from predefined geometric priors___, between a sampled point from this point set and the others. In this way, an inductive local representation with ___explicit reasoning about the spatial layout of points___ can be obtained, which leads to much shape awareness and robustness. With this convolution as a basic operator, RS-CNN, a hierarchical architecture can be developed to achieve contextual shape-aware learning for point cloud analysis. Extensive experiments on challenging benchmarks across three tasks verify RS-CNN achieves the state of the arts.
 
 <h1 align = "center">Motivation</h1> 
 
@@ -49,7 +49,7 @@ In this paper, we develop a hierarchical CNN-like architecture, _i.e._ RS-CNN, e
 
 To be specific:
 
-- The convolutional weight <img src="maths/w_strong.png" align="center" border="0" weight="24" height="16" alt="{\bm{\mathrm w}}_j" /> for <img src="maths/xj.png" align="center" border="0" alt="x_{j}" width="19" height="17" /> is converted to <img src="maths/wij.png" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}" width="28" height="16" />, which learns a high-level mapping <img src="maths/m.png" align="center" border="0" alt="\mathcal{M}" width="25" height="15" />: <img src="maths/wijm.png" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}=\mathcal{M}({\bm{\mathrm h}}_{ij})" width="100" height="19" /> on predefined geometric relation vector <img src="maths/hij.png" align="center" border="0" alt="{\bm{\mathrm h}}_{ij}" width="23" height="19" />.
+- The convolutional weight <img src="maths/w_strong.png" align="center" border="0" weight="24" height="16" alt="{\bm{\mathrm w}}_j" /> for <img src="maths/xj.png" align="center" border="0" alt="x_{j}" width="19" height="17" /> is converted to <img src="maths/wij.png" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}" width="28" height="16" />, which learns a high-level mapping <img src="maths/m.png" align="center" border="0" alt="\mathcal{M}" width="25" height="15" />, _i.e._, <img src="maths/wijm.png" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}=\mathcal{M}({\bm{\mathrm h}}_{ij})" width="110" height="22" />, on predefined geometric relation vector <img src="maths/hij.png" align="center" border="0" alt="{\bm{\mathrm h}}_{ij}" width="23" height="19" />.
 
 - In this way, the inductive convolutional representation <img src="maths/conv.png" align="center" border="0" weight="160" height="24"  alt="\sigma \big( \mathcal{A}(\{{\bm{\mathrm w}}_{ij} \cdot {\bm{\mathrm f}}_{x_j}, \hspace{0.1pt} \forall x_j\}) \big)"/> can expressively reason the spatial layout of points, resulting in discriminative shape awareness.
 
@@ -79,7 +79,7 @@ To be specific:
 <small> Shape classification results (%) (nor: normal). </small>
 </p>
 
-- Our RS-CNN outperforms the state-of-the-art point cloud-based methods with only <img src="maths/xyz.png" align="center" border="0" alt="\mathrm{xyz}" width="17" height="10" /> as the input features. 
+- Our RS-CNN outperforms the state-of-the-art point cloud-based methods with only <img src="maths/xyz.png" align="center" border="0" alt="\mathrm{xyz}" width="25" height="15" /> as the input features. 
 
 ### Normal Estimation
 
@@ -120,7 +120,7 @@ To be specific:
     <img src="images/rotation.jpg" width="70%" height ="70%" alt="rotation.jpg" />
 </div>
 <p align = 'center'>
-<small> All the models are trained without related data augmentations, _e.g._, translation or rotation, to avoid confusion. During testing, we perform random permutation (perm.) of points, add a small translation of 0.2 and rotate the input point cloud by 90 degree and 180 degree. </small>
+<small> All the models are trained without related data augmentations, e.g., translation or rotation, to avoid confusion. During testing, we perform random permutation (perm.) of points, add a small translation of 0.2 and rotate the input point cloud by 90 degree and 180 degree. </small>
 </p>
 
 <h1 align = "center">Visualization and Complexity</h1>
@@ -128,7 +128,7 @@ To be specific:
 ### Visualization
 
 <div align="center">
-    <img src="images/visualization.jpg" width="70%" height ="70%" alt="visualization.jpg" />
+    <img src="images/visualization.jpg" width="60%" height ="60%" alt="visualization.jpg" />
 </div>
 <p align = 'center'>
 <small> Visualization of the shape features learned by the first two layers of RS-CNN. </small>
