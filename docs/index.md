@@ -48,7 +48,7 @@ In this paper, we develop a hierarchical CNN-like architecture, _i.e._ RS-CNN, e
 
 To be specific:
 
-- The convolutional weight for <img src="http://www.sciweavers.org/tex2img.php?eq=x_%7Bj%7D&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="x_{j}" width="18" height="14" /> is converted to <img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20w%7D%7D_%7Bij%7D&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}" width="25" height="14" />, which learns a high-level mapping <img src="http://www.sciweavers.org/tex2img.php?eq=%5Cmathcal%7BM%7D&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="\mathcal{M}" width="25" height="14" /> (<img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20w%7D%7D_%7Bij%7D%3D%5Cmathcal%7BM%7D%28%7B%5Cbm%7B%5Cmathrm%20h%7D%7D_%7Bij%7D%29&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}=\mathcal{M}({\bm{\mathrm h}}_{ij})" width="99" height="19" />) on predefined geometric relation vector <img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20h%7D%7D_%7Bij%7D&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm h}}_{ij}" width="22" height="18" />.
+- The convolutional weight <img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20w%7D%7D_j&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm w}}_j" width="21" height="14" /> for <img src="http://www.sciweavers.org/tex2img.php?eq=x_%7Bj%7D&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="x_{j}" width="18" height="14" /> is converted to <img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20w%7D%7D_%7Bij%7D&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}" width="25" height="14" />, which learns a high-level mapping <img src="http://www.sciweavers.org/tex2img.php?eq=%5Cmathcal%7BM%7D&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="\mathcal{M}" width="25" height="14" /> (<img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20w%7D%7D_%7Bij%7D%3D%5Cmathcal%7BM%7D%28%7B%5Cbm%7B%5Cmathrm%20h%7D%7D_%7Bij%7D%29&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}=\mathcal{M}({\bm{\mathrm h}}_{ij})" width="99" height="19" />) on predefined geometric relation vector <img src="http://www.sciweavers.org/tex2img.php?eq=%7B%5Cbm%7B%5Cmathrm%20h%7D%7D_%7Bij%7D&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="{\bm{\mathrm h}}_{ij}" width="22" height="18" />.
 
 - In this way, the inductive convolutional representation <img src="http://www.sciweavers.org/tex2img.php?eq=%5Csigma%20%5Cbig%28%20%5Cmathcal%7BA%7D%28%5C%7B%7B%5Cbm%7B%5Cmathrm%20w%7D%7D_%7Bij%7D%20%5Ccdot%20%7B%5Cbm%7B%5Cmathrm%20f%7D%7D_%7Bx_j%7D%2C%20%5Chspace%7B0.1pt%7D%20%5Cforall%20x_j%5C%7D%29%20%5Cbig%29&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="\sigma \big( \mathcal{A}(\{{\bm{\mathrm w}}_{ij} \cdot {\bm{\mathrm f}}_{x_j}, \hspace{0.1pt} \forall x_j\}) \big)" width="154" height="22" /> can expressively reason the spatial layout of points, resulting in discriminative shape awareness.
 
@@ -56,35 +56,62 @@ To be specific:
 
 # Revisiting 2D Grid Convolution
 
-### Overall Ablation
+[2dconv]: ./images/2dconv.jpg
+![2dconv]
+<p align = 'center'>
+<small> Illustration of 2D grid convolution with a kernel of 3 x 3. </small>
+</p>
 
-[overall_ab]: ./images/overall_ab.jpg
-![overall_ab]
+- The convolutional weight <img src="http://www.sciweavers.org/tex2img.php?eq=w_%7Bj%7D&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="w_{j}" width="21" height="14" /> for <img src="http://www.sciweavers.org/tex2img.php?eq=x_%7Bj%7D&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="x_{j}" width="18" height="14" /> always implies a fixed positional relation between <img src="http://www.sciweavers.org/tex2img.php?eq=x_%7Bi%7D&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="x_{i}" width="18" height="12" /> and its neighbor <img src="http://www.sciweavers.org/tex2img.php?eq=x_%7Bj%7D&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="x_{j}" width="18" height="14" /> in the regular grid. That is, <img src="http://www.sciweavers.org/tex2img.php?eq=w_%7Bj%7D&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="w_{j}" width="21" height="14" /> is actually constrained to encode one kind of regular grid relation in the learning process.
 
-- The T-WDet model achieves very good performance on MS-COCO while slightly better performance on NUS-WIDE. The reason may be that the clean object labels on MS-COCO are quite suitable for detection task while the noisy concept labels are not.
+- Therefore, our RS-Conv with relation learning is more general and can be applied to model 2D grid spatial relationship.
 
-- After distillation, the MLIC model not only has global information learned by itself, but also perceives the local semantic regions as ___complementary cues___ distilled from the WSD model, thus it could surpass the latter on NUS-WIDE.
+# Experiment
 
-### Region Proposal
+### Shape Classification on ModelNet40 Benchmark
 
-[proposal]: ./images/proposal.jpg
-![proposal]
+[cls]: ./images/cls.jpg
+![cls]
+<p align = 'center'>
+<small> Shape classification results (%). Our RS-CNN outperforms the state of the arts with only <img src="http://www.sciweavers.org/tex2img.php?eq=%5Cmathrm%7Bxyz%7D&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="\mathrm{xyz}" width="28" height="12" /> as the input features. </small>
+</p>
 
-- The classification performance of T-WDet is improved from 78.6 to 81.1 when using the fully-supervised detection results (__Faster-RCNN__).
+### Normal Estimation
 
-- The S-Cls model is improved to 76.3 compared with EdgeBoxes proposals to 74.6, where the gap is not obvious. This further demonstrates the effectiveness and practicability of our proposed framework.
+[normal]: ./images/normal.jpg
+![normal]
+<p align = 'center'>
+<small> Normal estimation examples. For clearness, we only show predictions with angle less than 30 degree in blue, and angle greater than 90 degree in red between the ground truth normals. </small>
+</p>
+
+### Relation Definition
+
+[relation]: ./images/relation.jpg
+![relation]
+<p align = 'center'>
+<small> The results (%) of five intuitive low-level relation. Model A applies only 3D Euclidean distance; Model B adds the coordinates difference to model A; Model C adds the coordinates of two points to model B; Model D utilizes the normals of two points and their cosine distance; Model E projects 3D points onto a 2D plane of XY, XZ and YZ. </small>
+</p>
 
 ### Robustness 
 
-[coco]: ./images/coco.png
-![coco]
-[nus]: ./images/nus.png
-![nus]
-<p align = 'center'><small>The improvements of S-Cls model over each class/concept on MS-COCO (upper figure) and NUS-WIDE (lower figure) after knowledge distillation with our framework. "*k" indicates the number (divided by 1000) of images including this class/concept. The classes/concepts in horizontal axis are sorted by the number "*k" from large to small.</small></p>
+[density]: ./images/density.jpg
+![density]
+<p align = 'center'>
+<small> Robustness to sampling density. Left part: Point cloud with random point dropout. Right part: Test results of using sparser points as the input to a model trained with 1024 points. </small>
+</p>
 
-- The improvements are also considerable even when the classes are very __imbalanced__ (on NUS-WIDE, the classes in which the number of images is fewer are improved even more).
+[rotation]: ./images/rotation.jpg
+![rotation]
+<p align = 'center'>
+<small> Robustness to point permutation and rigid transformation (%). During testing, we perform random permutation (perm.) of points, add a small translation of 0.2 and rotate the input point cloud by 90 degree and 180 degree. </small>
+</p>
 
-- The improvements are robust to the ___object's size___ and the ___label's type___. On MS-COCO, small objects like "bottle", "fork", "apple" and so on, which may be difficult for the classification model to pay attention, are also improved a lot. On NUS-WIDE, scenes (e.g., "rainbow"), events (e.g., "earthquake") and objects (e.g., "book") are all improved considerably.
+### Complexity
+[complexity]: ./images/complexity.jpg
+![complexity]
+<p align = 'center'>
+<small> Complexity of RS-CNN in point cloud classification. </small>
+</p>
 
 # Code
 
@@ -92,17 +119,17 @@ Please refer to the [GitHub repository](https://github.com/Yochengliu/MLIC-KD-WS
 
 # Publication
 
-Yongcheng Liu, Lu Sheng, Jing Shao, Junjie Yan, Shiming Xiang and Chunhong Pan, "Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection", in ACM International Conference on Multimedia (MM), 2018. [[ACM DL](https://dl.acm.org/citation.cfm?id=3240567)] [[arXiv](https://arxiv.org/abs/1809.05884)]
+Yongcheng Liu, Bin Fan, Shiming Xiang and Chunhong Pan, "Relation-Shape Convolutional Neural Network for Point Cloud Analysis", in IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2019. [[arXiv](https://arxiv.org/abs/1904.07601)]
 
 ```
-@inproceedings{liu2019rscnn,   
-  author = {Yongcheng Liu and    
-            Bin Fan and    
-            Shiming Xiang and   
-            Chunhong Pan},   
-  title = {Relation-Shape Convolutional Neural Network for Point Cloud Analysis},   
-  booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},    
-  pages = {1--10},  
-  year = {2019}   
-}   
+        @inproceedings{liu2019rscnn,   
+            author = {Yongcheng Liu and    
+                    Bin Fan and    
+                    Shiming Xiang and   
+                    Chunhong Pan},   
+            title = {Relation-Shape Convolutional Neural Network for Point Cloud Analysis},   
+            booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},    
+            pages = {1--10},  
+            year = {2019}   
+        }   
 ```
