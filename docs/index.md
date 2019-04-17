@@ -15,7 +15,7 @@
 [partseg_results]: ./images/partseg.jpg
 ![partseg_results]
 <p align = 'center'>
-    <medium>Segmentation examples on ShapeNet part benchmark. Although the part shapes implied in irregular points are extremely diverse and they may be very confusing to recognize, our RS-CNN can also segment them out with decent accuracy.</medium>
+    <small>Segmentation examples on ShapeNet part benchmark. Although the part shapes implied in irregular points are extremely diverse and they may be very confusing to recognize, our RS-CNN can also segment them out with decent accuracy.</small>
 </p>
 
 <h2 align = "center">Abstract</h2> 
@@ -24,12 +24,11 @@ Point cloud analysis is very challenging, as the shape implied in irregular poin
 
 <h2 align = "center">Motivation</h2> 
 
-[motivation]: ./images/motivation.jpg
 <div style="align: center">
-![motivation]
+< img src="images/motivation.jpg" width = 80% height = 80% />
 </div>
 <p align = 'center'>
-<medium>Left part: 3D Point cloud. Right part: Underlying shape formed by this point cloud.</medium>
+<small>Left part: 3D Point cloud. Right part: Underlying shape formed by this point cloud.</small>
 </p>
 
 - The geometric relation among points is an explicit expression about the spatial layout of points, further discriminatively reflecting the underlying shape.
@@ -43,7 +42,7 @@ Point cloud analysis is very challenging, as the shape implied in irregular poin
 [rsconv]: ./images/rsconv.jpg
 ![rsconv]
 <p align = 'center'>
-<medium> Overview of our relation-shape convolution (RS-Conv). </medium>
+<small> Overview of our relation-shape convolution (RS-Conv). </small>
 </p>
 
 In this paper, we develop a hierarchical CNN-like architecture, _i.e._ RS-CNN, equipped with a novel learn-from-relation convolution operator called relation-shape convolution (RS-Conv). As illustrated in the figure, the key to RS-CNN is learning from relation.
@@ -61,7 +60,7 @@ To be specific:
 [2dconv]: ./images/2dconv.jpg
 ![2dconv]
 <p align = 'center'>
-<medium> Illustration of 2D grid convolution with a kernel of 3 x 3. </medium>
+<small> Illustration of 2D grid convolution with a kernel of 3 x 3. </small>
 </p>
 
 - The convolutional weight <img src="http://www.sciweavers.org/tex2img.php?eq=w_%7Bj%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="w_{j}" width="31" height="21" /> for <img src="http://www.sciweavers.org/tex2img.php?eq=x_%7Bj%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="x_{j}" width="27" height="21" /> always implies a fixed positional relation between <img src="http://www.sciweavers.org/tex2img.php?eq=x_%7Bi%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="x_{i}" width="27" height="19" /> and its neighbor <img src="http://www.sciweavers.org/tex2img.php?eq=x_%7Bj%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="x_{j}" width="27" height="21" /> in the regular grid. That is, <img src="http://www.sciweavers.org/tex2img.php?eq=w_%7Bj%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="w_{j}" width="31" height="21" /> is actually constrained to encode one kind of regular grid relation in the learning process.
@@ -75,7 +74,7 @@ To be specific:
 [cls]: ./images/cls.jpg
 ![cls]
 <p align = 'center'>
-<medium> Shape classification results (%). Our RS-CNN outperforms the state of the arts with only <img src="http://www.sciweavers.org/tex2img.php?eq=%5Cmathrm%7Bxyz%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="\mathrm{xyz}" width="42" height="19" /> as the input features. </medium>
+<small> Shape classification results (%). Our RS-CNN outperforms the state of the arts with only <img src="http://www.sciweavers.org/tex2img.php?eq=%5Cmathrm%7Bxyz%7D&bc=White&fc=Black&im=png&fs=18&ff=modern&edit=0" align="center" border="0" alt="\mathrm{xyz}" width="42" height="19" /> as the input features. </small>
 </p>
 
 ### Normal Estimation
@@ -83,7 +82,7 @@ To be specific:
 [normal]: ./images/normal.jpg
 ![normal]
 <p align = 'center'>
-<medium> Normal estimation examples. For clearness, we only show predictions with angle less than 30 degree in blue, and angle greater than 90 degree in red between the ground truth normals. </medium>
+<small> Normal estimation examples. For clearness, we only show predictions with angle less than 30 degree in blue, and angle greater than 90 degree in red between the ground truth normals. </small>
 </p>
 
 ### Relation Definition
@@ -91,7 +90,7 @@ To be specific:
 [relation]: ./images/relation.jpg
 ![relation]
 <p align = 'center'>
-<medium> The results (%) of five intuitive low-level relation. Model A applies only 3D Euclidean distance; Model B adds the coordinates difference to model A; Model C adds the coordinates of two points to model B; Model D utilizes the normals of two points and their cosine distance; Model E projects 3D points onto a 2D plane of XY, XZ and YZ. </medium>
+<small> The results (%) of five intuitive low-level relation. Model A applies only 3D Euclidean distance; Model B adds the coordinates difference to model A; Model C adds the coordinates of two points to model B; Model D utilizes the normals of two points and their cosine distance; Model E projects 3D points onto a 2D plane of XY, XZ and YZ. </small>
 </p>
 
 ### Robustness 
@@ -99,13 +98,13 @@ To be specific:
 [density]: ./images/density.jpg
 ![density]
 <p align = 'center'>
-<medium> Robustness to sampling density. Left part: Point cloud with random point dropout. Right part: Test results of using sparser points as the input to a model trained with 1024 points. </medium>
+<small> Robustness to sampling density. Left part: Point cloud with random point dropout. Right part: Test results of using sparser points as the input to a model trained with 1024 points. </small>
 </p>
 
 [rotation]: ./images/rotation.jpg
 ![rotation]
 <p align = 'center'>
-<medium> Robustness to point permutation and rigid transformation (%). During testing, we perform random permutation (perm.) of points, add a small translation of 0.2 and rotate the input point cloud by 90 degree and 180 degree. </medium>
+<small> Robustness to point permutation and rigid transformation (%). During testing, we perform random permutation (perm.) of points, add a small translation of 0.2 and rotate the input point cloud by 90 degree and 180 degree. </small>
 </p>
 
 <h2 align = "center">Visualization and Complexity</h2>
@@ -114,14 +113,14 @@ To be specific:
 [Visualization]: ./images/visualization.jpg
 ![Visualization]
 <p align = 'center'>
-<medium> The features learned by the first layer mostly respond to edges, corners and arcs, while the ones in the second layer capture more semantical shape parts like airfoils and heads. </medium>
+<small> The features learned by the first layer mostly respond to edges, corners and arcs, while the ones in the second layer capture more semantical shape parts like airfoils and heads. </small>
 </p>
 
 ### Complexity
 [complexity]: ./images/complexity.jpg
 ![complexity]
 <p align = 'center'>
-<medium> Complexity of RS-CNN in point cloud classification. </medium>
+<small> Complexity of RS-CNN in point cloud classification. </small>
 </p>
 
 # Code
