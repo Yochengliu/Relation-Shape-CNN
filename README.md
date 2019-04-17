@@ -2,7 +2,7 @@ Relation-Shape Convolutional Neural Network for Point Cloud Analysis
 ===
 This repository contains the code (__comming soon__) in Pytorch for the paper:
 
-__Relation-Shape Convolutional Neural Network for Point Cloud Analysis__ ([arXiv](kkkkkk))
+__Relation-Shape Convolutional Neural Network for Point Cloud Analysis__ [[arXiv](https://arxiv.org/abs/1904.07601)]
 <br>
 [Yongcheng Liu](https://yochengliu.github.io/), [Bin Fan](http://www.nlpr.ia.ac.cn/fanbin/), [Shiming Xiang](https://scholar.google.com/citations?user=0ggsACEAAAAJ&hl=zh-CN) and [Chunhong Pan](http://people.ucas.ac.cn/~0005314)
 <br>
