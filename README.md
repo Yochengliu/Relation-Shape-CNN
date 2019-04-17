@@ -14,14 +14,14 @@ __Relation-Shape Convolutional Neural Network for Point Cloud Analysis__ ([arXiv
 If our paper is helpful for your research, please consider citing:   
 
         @inproceedings{liu2019rscnn,   
-          author = {Yongcheng Liu and    
+            author = {Yongcheng Liu and    
                     Bin Fan and    
                     Shiming Xiang and   
                     Chunhong Pan},   
-          title = {Relation-Shape Convolutional Neural Network for Point Cloud Analysis},   
-          booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},    
-          pages = {1--10},  
-          year = {2019}   
+            title = {Relation-Shape Convolutional Neural Network for Point Cloud Analysis},   
+            booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},    
+            pages = {1--10},  
+            year = {2019}   
         }   
 
 ## Contact
