@@ -49,22 +49,22 @@ In this paper, we develop a hierarchical CNN-like architecture, _i.e._ RS-CNN, e
 
 To be specific:
 
-- The convolutional weight <img src="maths/w_strong.png" align="center" border="0" weight="24" height="16" alt="{\bm{\mathrm w}}_j" /> for <img src="maths/xj.png" align="center" border="0" alt="x_{j}" width="21" height="16" /> is converted to <img src="maths/wij.png" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}" width="28" height="16" />, which learns a high-level mapping <img src="maths/m.png" align="center" border="0" alt="\mathcal{M}" width="28" height="16" /> (<img src="maths/wijm.png" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}=\mathcal{M}({\bm{\mathrm h}}_{ij})" width="90" height="16" />) on predefined geometric relation vector <img src="maths/hij.png" align="center" border="0" alt="{\bm{\mathrm h}}_{ij}" width="20" height="16" />.
+- The convolutional weight <img src="maths/w_strong.png" align="center" border="0" weight="24" height="16" alt="{\bm{\mathrm w}}_j" /> for <img src="maths/xj.png" align="center" border="0" alt="x_{j}" width="19" height="17" /> is converted to <img src="maths/wij.png" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}" width="28" height="16" />, which learns a high-level mapping <img src="maths/m.png" align="center" border="0" alt="\mathcal{M}" width="25" height="15" />: <img src="maths/wijm.png" align="center" border="0" alt="{\bm{\mathrm w}}_{ij}=\mathcal{M}({\bm{\mathrm h}}_{ij})" width="100" height="19" /> on predefined geometric relation vector <img src="maths/hij.png" align="center" border="0" alt="{\bm{\mathrm h}}_{ij}" width="23" height="19" />.
 
-- In this way, the inductive convolutional representation <img src="maths/conv.png" align="center" border="0" weight="154" height="22"  alt="\sigma \big( \mathcal{A}(\{{\bm{\mathrm w}}_{ij} \cdot {\bm{\mathrm f}}_{x_j}, \hspace{0.1pt} \forall x_j\}) \big)"/> can expressively reason the spatial layout of points, resulting in discriminative shape awareness.
+- In this way, the inductive convolutional representation <img src="maths/conv.png" align="center" border="0" weight="160" height="24"  alt="\sigma \big( \mathcal{A}(\{{\bm{\mathrm w}}_{ij} \cdot {\bm{\mathrm f}}_{x_j}, \hspace{0.1pt} \forall x_j\}) \big)"/> can expressively reason the spatial layout of points, resulting in discriminative shape awareness.
 
 - As in image CNN, further channel-raising mapping is conducted for a more powerful shape-aware representation.
 
 <h1 align = "center">Revisiting 2D Grid Convolution</h1>
 
 <div align="center">
-    <img src="images/2dconv.jpg" width="50%" height ="50%" alt="2dconv.jpg" />
+    <img src="images/2dconv.jpg" width="55%" height ="55%" alt="2dconv.jpg" />
 </div>
 <p align = 'center'>
 <small> Illustration of 2D grid convolution with a kernel of 3 x 3. </small>
 </p>
 
-- The convolutional weight <img src="maths/swj.png" align="center" border="0" alt="w_{j}" width="31" height="21" /> for <img src="maths/xj.png" align="center" border="0" alt="x_{j}" width="27" height="21" /> always implies a fixed positional relation between <img src="maths/xi.png" align="center" border="0" alt="x_{i}" width="27" height="19" /> and its neighbor <img src="maths/xj.png" align="center" border="0" alt="x_{j}" width="27" height="21" /> in the regular grid. That is, <img src="maths/swj.png" align="center" border="0" alt="w_{j}" width="31" height="21" /> is actually constrained to encode one kind of regular grid relation in the learning process.
+- The convolutional weight <img src="maths/swj.png" align="center" border="0" alt="w_{j}" width="25" height="17" /> for <img src="maths/xj.png" align="center" border="0" alt="x_{j}" width="19" height="17" /> always implies a fixed positional relation between <img src="maths/xi.png" align="center" border="0" alt="x_{i}" width="19" height="15" /> and its neighbor <img src="maths/xj.png" align="center" border="0" alt="x_{j}" width="19" height="17" /> in the regular grid. That is, <img src="maths/swj.png" align="center" border="0" alt="w_{j}" width="25" height="17" /> is actually constrained to encode one kind of regular grid relation in the learning process.
 
 - Therefore, our RS-Conv with relation learning is more general and can be applied to model 2D grid spatial relationship.
 
@@ -76,8 +76,10 @@ To be specific:
     <img src="images/cls.jpg" width="45%" height ="45%" alt="cls.jpg" />
 </div>
 <p align = 'center'>
-<small> Shape classification results (%). Our RS-CNN outperforms the state of the arts with only <img src="maths/xyz.png" align="center" border="0" alt="\mathrm{xyz}" width="32" height="19" /> as the input features. </small>
+<small> Shape classification results (%) (nor: normal). </small>
 </p>
+
+- Our RS-CNN outperforms the state-of-the-art point cloud-based methods with only <img src="maths/xyz.png" align="center" border="0" alt="\mathrm{xyz}" width="17" height="10" /> as the input features. 
 
 ### Normal Estimation
 
@@ -88,7 +90,7 @@ To be specific:
 <small> Normal estimation examples. For clearness, we only show predictions with angle less than 30 degree in blue, and angle greater than 90 degree in red between the ground truth normals. </small>
 </p>
 
-### Relation Definition
+### Geometric Relation Definition
 
 <div align="center">
     <img src="images/relation.jpg" width="60%" height ="60%" alt="relation.jpg" />
@@ -97,20 +99,28 @@ To be specific:
 <small> The results (%) of five intuitive low-level relation. Model A applies only 3D Euclidean distance; Model B adds the coordinates difference to model A; Model C adds the coordinates of two points to model B; Model D utilizes the normals of two points and their cosine distance; Model E projects 3D points onto a 2D plane of XY, XZ and YZ. </small>
 </p>
 
-### Robustness 
+- The low-level relation vector can be defined flexibly. 
+
+- Using only 3D Euclidean distance as relation can result in an accuracy of 92.5%.
+
+- Even learning from the relation in 2D projections of points, a decent performance of 92.2% can also be achieved. 
+
+### Robustness to sampling density
 
 <div align="center">
     <img src="images/density.jpg" width="80%" height ="80%" alt="density.jpg" />
 </div>
 <p align = 'center'>
-<small> Robustness to sampling density. Left part: Point cloud with random point dropout. Right part: Test results of using sparser points as the input to a model trained with 1024 points. </small>
+<small> Left part: Point cloud with random point dropout. Right part: Test results of using sparser points as the input to a model trained with 1024 points. </small>
 </p>
+
+### Robustness to point permutation and rigid transformation (%)
 
 <div align="center">
     <img src="images/rotation.jpg" width="70%" height ="70%" alt="rotation.jpg" />
 </div>
 <p align = 'center'>
-<small> Robustness to point permutation and rigid transformation (%). During testing, we perform random permutation (perm.) of points, add a small translation of 0.2 and rotate the input point cloud by 90 degree and 180 degree. </small>
+<small> All the models are trained without related data augmentations, _e.g._, translation or rotation, to avoid confusion. During testing, we perform random permutation (perm.) of points, add a small translation of 0.2 and rotate the input point cloud by 90 degree and 180 degree. </small>
 </p>
 
 <h1 align = "center">Visualization and Complexity</h1>
@@ -121,8 +131,12 @@ To be specific:
     <img src="images/visualization.jpg" width="70%" height ="70%" alt="visualization.jpg" />
 </div>
 <p align = 'center'>
-<small> The features learned by the first layer mostly respond to edges, corners and arcs, while the ones in the second layer capture more semantical shape parts like airfoils and heads. </small>
+<small> Visualization of the shape features learned by the first two layers of RS-CNN. </small>
 </p>
+
+- The features learned by the first layer mostly respond to edges, corners and arcs, while the ones in the second layer capture more semantical shape parts like airfoils and heads.
+
+- As image CNN, our RS-CNN works in a local-to-global manner for 3D point cloud.
 
 ### Complexity
 
@@ -133,11 +147,7 @@ To be specific:
 <small> Complexity of RS-CNN in point cloud classification. </small>
 </p>
 
-# Code
-
-Please refer to the [GitHub repository](https://github.com/Yochengliu/Relation-Shape-CNN) for more details. 
-
-# Publication
+<h1 align = "center">Publication</h1>
 
 Yongcheng Liu, Bin Fan, Shiming Xiang and Chunhong Pan, "Relation-Shape Convolutional Neural Network for Point Cloud Analysis", in IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2019. [[arXiv](https://arxiv.org/abs/1904.07601)]
 
