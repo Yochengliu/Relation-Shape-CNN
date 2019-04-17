@@ -12,7 +12,7 @@
 <br>
 
 <div align="center">
-    <img src="images/partseg.jpg" width="80%" height ="80%" alt="partseg.jpg" />
+    <img src="images/partseg.jpg" width="90%" height ="90%" alt="partseg.jpg" />
 </div>
 <p align = 'center'>
     <small>Segmentation examples on ShapeNet part benchmark. Although the part shapes implied in irregular points are extremely diverse and they may be very confusing to recognize, our RS-CNN can also segment them out with decent accuracy.</small>
@@ -25,7 +25,7 @@ Point cloud analysis is very challenging, as the shape implied in irregular poin
 <h1 align = "center">Motivation</h1> 
 
 <div align="center">
-    <img src="images/motivation.jpg" width="60%" height ="60%" alt="motivation.jpg" />
+    <img src="images/motivation.jpg" width="80%" height ="80%" alt="motivation.jpg" />
 </div>
 <p align = 'center'>
     <small>Left part: 3D Point cloud. Right part: Underlying shape formed by this point cloud.</small>
@@ -35,7 +35,7 @@ Point cloud analysis is very challenging, as the shape implied in irregular poin
 
 - CNN has demonstrated its powerful visual abstraction capability for 2D images that are in the format of a regular grid.
 
-- Can we extend 2D grid CNN to 3D irregular configuration for point cloud analysis, by learning high-level geometric relation encoding for discriminative shape awareness?
+- Can we extend 2D grid CNN to 3D irregular configuration for point cloud analysis, by learning expressive geometric relation encoding for discriminative shape awareness?
 
 <h1 align = "center">RS-Conv: Relation-Shape Convolution</h1>
 
@@ -45,7 +45,7 @@ Point cloud analysis is very challenging, as the shape implied in irregular poin
 <small> Overview of our relation-shape convolution (RS-Conv). </small>
 </p>
 
-In this paper, we develop a hierarchical CNN-like architecture, _i.e._ RS-CNN, equipped with a novel learn-from-relation convolution operator called relation-shape convolution (RS-Conv). As illustrated in the figure, the key to RS-CNN is learning from relation.
+In this paper, we develop a hierarchical CNN-like architecture, _i.e._ RS-CNN. RS-CNN is equipped with a novel learn-from-relation convolution operator called relation-shape convolution (RS-Conv). As illustrated in the figure, the key to RS-CNN is learning from relation.
 
 To be specific:
 
@@ -58,7 +58,7 @@ To be specific:
 <h1 align = "center">Revisiting 2D Grid Convolution</h1>
 
 <div align="center">
-    <img src="images/2dconv.jpg" width="55%" height ="55%" alt="2dconv.jpg" />
+    <img src="images/2dconv.jpg" width="75%" height ="75%" alt="2dconv.jpg" />
 </div>
 <p align = 'center'>
 <small> Illustration of 2D grid convolution with a kernel of 3 x 3. </small>
@@ -73,7 +73,7 @@ To be specific:
 ### Shape Classification on ModelNet40 Benchmark
 
 <div align="center">
-    <img src="images/cls.jpg" width="45%" height ="45%" alt="cls.jpg" />
+    <img src="images/cls.jpg" width="70%" height ="70%" alt="cls.jpg" />
 </div>
 <p align = 'center'>
 <small> Shape classification results (%) (nor: normal). </small>
@@ -84,7 +84,7 @@ To be specific:
 ### Normal Estimation
 
 <div align="center">
-    <img src="images/normal.jpg" width="65%" height ="65%" alt="normal.jpg" />
+    <img src="images/normal.jpg" width="80%" height ="80%" alt="normal.jpg" />
 </div>
 <p align = 'center'>
 <small> Normal estimation examples. For clearness, we only show predictions with angle less than 30 degree in blue, and angle greater than 90 degree in red between the ground truth normals. </small>
@@ -93,7 +93,7 @@ To be specific:
 ### Geometric Relation Definition
 
 <div align="center">
-    <img src="images/relation.jpg" width="60%" height ="60%" alt="relation.jpg" />
+    <img src="images/relation.jpg" width="80%" height ="80%" alt="relation.jpg" />
 </div>
 <p align = 'center'>
 <small> The results (%) of five intuitive low-level relation. Model A applies only 3D Euclidean distance; Model B adds the coordinates difference to model A; Model C adds the coordinates of two points to model B; Model D utilizes the normals of two points and their cosine distance; Model E projects 3D points onto a 2D plane of XY, XZ and YZ. </small>
@@ -108,7 +108,7 @@ To be specific:
 ### Robustness to sampling density
 
 <div align="center">
-    <img src="images/density.jpg" width="80%" height ="80%" alt="density.jpg" />
+    <img src="images/density.jpg" width="90%" height ="90%" alt="density.jpg" />
 </div>
 <p align = 'center'>
 <small> Left part: Point cloud with random point dropout. Right part: Test results of using sparser points as the input to a model trained with 1024 points. </small>
@@ -117,7 +117,7 @@ To be specific:
 ### Robustness to point permutation and rigid transformation (%)
 
 <div align="center">
-    <img src="images/rotation.jpg" width="70%" height ="70%" alt="rotation.jpg" />
+    <img src="images/rotation.jpg" width="90%" height ="90%" alt="rotation.jpg" />
 </div>
 <p align = 'center'>
 <small> All the models are trained without related data augmentations, e.g., translation or rotation, to avoid confusion. During testing, we perform random permutation (perm.) of points, add a small translation of 0.2 and rotate the input point cloud by 90 degree and 180 degree. </small>
@@ -128,7 +128,7 @@ To be specific:
 ### Visualization
 
 <div align="center">
-    <img src="images/visualization.jpg" width="60%" height ="60%" alt="visualization.jpg" />
+    <img src="images/visualization.jpg" width="80%" height ="80%" alt="visualization.jpg" />
 </div>
 <p align = 'center'>
 <small> Visualization of the shape features learned by the first two layers of RS-CNN. </small>
@@ -136,12 +136,12 @@ To be specific:
 
 - The features learned by the first layer mostly respond to edges, corners and arcs, while the ones in the second layer capture more semantical shape parts like airfoils and heads.
 
-- As image CNN, our RS-CNN works in a local-to-global manner for 3D point cloud.
+- As image CNN, our RS-CNN learns 3D shape semantics from point cloud in a local-to-global manner.
 
 ### Complexity
 
 <div align="center">
-    <img src="images/complexity.jpg" width="50%" height ="50%" alt="complexity.jpg" />
+    <img src="images/complexity.jpg" width="75%" height ="75%" alt="complexity.jpg" />
 </div>
 <p align = 'center'>
 <small> Complexity of RS-CNN in point cloud classification. </small>
