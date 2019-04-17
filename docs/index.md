@@ -24,7 +24,7 @@ Point cloud analysis is very challenging, as the shape implied in irregular poin
 
 <h2 align = "center">Motivation</h2> 
 
-<img src="images/motivation.jpg" width = 80% height = 80% align=right alt="motivation.jpg" />
+<img src="images/motivation.jpg" width="80%" height ="80%" align="center" alt="motivation.jpg" />
 <p align = 'center'>
 <small>Left part: 3D Point cloud. Right part: Underlying shape formed by this point cloud.</small>
 </p>
