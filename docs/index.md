@@ -24,9 +24,7 @@ Point cloud analysis is very challenging, as the shape implied in irregular poin
 
 <h2 align = "center">Motivation</h2> 
 
-<div style="align: center">
-< img src="./images/motivation.jpg" width = 80% height = 80% />
-</div>
+<img src="/images/motivation.jpg" width = 80% height = 80% align=right />
 <p align = 'center'>
 <small>Left part: 3D Point cloud. Right part: Underlying shape formed by this point cloud.</small>
 </p>
@@ -35,7 +33,7 @@ Point cloud analysis is very challenging, as the shape implied in irregular poin
 
 - CNN has demonstrated its powerful visual abstraction capability for 2D images that are in the format of a regular grid.
 
-- Can we extend 2D grid CNN to 3D irregular configuration for point cloud analysis, by learning high-level geometric relation encoding from local to global?
+- Can we extend 2D grid CNN to 3D irregular configuration for point cloud analysis, by learning high-level geometric relation encoding for discriminative shape awareness?
 
 <h2 align = "center">RS-Conv: Relation-Shape Convolution</h2>
 
