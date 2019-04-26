@@ -1,6 +1,6 @@
 Relation-Shape Convolutional Neural Network for Point Cloud Analysis
 ===
-This repository contains the code (__coming soon__) in Pytorch for the paper:
+This repository contains the code (__will come in Aug.__) in Pytorch for the paper:
 
 __Relation-Shape Convolutional Neural Network for Point Cloud Analysis__ [[arXiv](https://arxiv.org/abs/1904.07601)]
 <br>
