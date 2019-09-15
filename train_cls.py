@@ -27,7 +27,7 @@ torch.manual_seed(seed)
 torch.cuda.manual_seed(seed)       
 torch.cuda.manual_seed_all(seed) 
 
-parser = argparse.ArgumentParser(description='Relation-Shape CNN ModelNet Training')
+parser = argparse.ArgumentParser(description='Relation-Shape CNN Shape Classification Training')
 parser.add_argument('--config', default='cfgs/config_ssn_cls.yaml', type=str)
 
 def main():
