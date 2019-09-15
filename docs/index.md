@@ -1,13 +1,13 @@
 <h1 align = "center">Relation-Shape Convolutional Neural Network for Point Cloud Analysis</h1>
 <p align = "center">
-    <a href="https://yochengliu.github.io/" style="font-size: 23px">Yongcheng Liu</a> &emsp;&emsp;
-    <a href="http://www.nlpr.ia.ac.cn/fanbin/" style="font-size: 23px">Bin Fan</a> &emsp;&emsp;
-    <a href="https://scholar.google.com/citations?user=0ggsACEAAAAJ&hl=zh-CN" style="font-size: 23px">Shiming Xiang</a>  &emsp;&emsp;
+    <a href="https://yochengliu.github.io/" style="font-size: 23px">Yongcheng Liu</a> &emsp;
+    <a href="http://www.nlpr.ia.ac.cn/fanbin/" style="font-size: 23px">Bin Fan</a> &emsp;
+    <a href="https://scholar.google.com/citations?user=0ggsACEAAAAJ&hl=zh-CN" style="font-size: 23px">Shiming Xiang</a>  &emsp;
     <a href="http://people.ucas.ac.cn/~0005314" style="font-size: 23px">Chunhong Pan</a>
 </p>
 <p align = "center">
     <a href="http://cvpr2019.thecvf.com/" style="font-size: 23px"><strong>CVPR 2019</strong></a> &emsp;
-    <font color="red" size="5"><strong>Oral Presentation</strong></font>
+    <font color="red" size="5"><strong>Oral & Best paper finalist</strong></font>
 </p>
 <br>
 
@@ -149,7 +149,7 @@ To be specific:
 
 <h1 align = "center">Publication</h1>
 
-Yongcheng Liu, Bin Fan, Shiming Xiang and Chunhong Pan, "Relation-Shape Convolutional Neural Network for Point Cloud Analysis", in IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2019. [[arXiv](https://arxiv.org/abs/1904.07601)]
+Yongcheng Liu, Bin Fan, Shiming Xiang and Chunhong Pan, "Relation-Shape Convolutional Neural Network for Point Cloud Analysis", in IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2019. [[arXiv](https://arxiv.org/abs/1904.07601)] [[CVF](http://openaccess.thecvf.com/content_CVPR_2019/papers/Liu_Relation-Shape_Convolutional_Neural_Network_for_Point_Cloud_Analysis_CVPR_2019_paper.pdf)]
 
 ```
         @inproceedings{liu2019rscnn,   
@@ -159,7 +159,7 @@ Yongcheng Liu, Bin Fan, Shiming Xiang and Chunhong Pan, "Relation-Shape Convolut
                            Chunhong Pan},   
             title = {Relation-Shape Convolutional Neural Network for Point Cloud Analysis},   
             booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},    
-            pages = {1--10},  
+            pages = {8895--8904},  
             year = {2019}   
         }   
 ```
