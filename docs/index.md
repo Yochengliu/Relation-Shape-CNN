@@ -7,7 +7,7 @@
 </p>
 <p align = "center">
     <a href="http://cvpr2019.thecvf.com/" style="font-size: 23px"><strong>CVPR 2019</strong></a> &emsp;
-    <font color=#FF4500 size="5"><strong>Oral & Best paper finalist</strong></font>
+    <font color="#FF4500" size="5"><strong>Oral & Best paper finalist</strong></font>
 </p>
 <br>
 
