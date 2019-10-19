@@ -1,0 +1,32 @@
+common:
+    workers: 4
+
+    num_points: 2048
+    num_classes: 50
+    batch_size: 28
+    
+    base_lr: 0.001
+    lr_clip: 0.00001
+    lr_decay: 0.5
+    decay_step: 21
+    epochs: 200
+
+    weight_decay: 0
+    bn_momentum: 0.9
+    bnm_clip: 0.01
+    bn_decay: 0.5
+    
+    evaluate: 1           # validation in training process
+    val_freq_epoch: 0.7   # frequency in epoch for validation, can be decimal
+    print_freq_iter: 20   # frequency in iteration for printing infomation
+    
+    input_channels: 0     # feature channels except (x, y, z)
+    
+    # h_ij: 0  for 3D Euclidean distance (3D Ed),    channels = 1
+    #       1  for (3D Ed, x_i, x_j, x_j - x_i),     channels = 10
+    #       2  for (2D Ed, x'_i, x'_j, x'_j - x'_i), channels = 10,  x' indicates 2D coordinates
+    relation_prior: 1
+    
+    checkpoint: ''        # the model to start from
+    save_path: seg
+    data_root: $data_root$
