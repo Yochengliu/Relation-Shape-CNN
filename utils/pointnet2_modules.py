@@ -200,7 +200,7 @@ class PointnetFPModule(nn.Module):
 
     def __init__(self, *, mlp: List[int], bn: bool = True):
         super().__init__()
-        self.mlp = pt_utils.SharedPointMlp(mlp, bn=bn)
+        self.mlp = pt_utils.SharedMLP(mlp, bn=bn)
 
     def forward(
             self, unknown: torch.Tensor, known: torch.Tensor,
@@ -237,10 +237,11 @@ class PointnetFPModule(nn.Module):
                                      dim=1)  #(B, C2 + C1, n)
         else:
             new_features = interpolated_feats
-
+        
+        new_features = new_features.unsqueeze(-1)
         new_features = self.mlp(new_features)
 
-        return new_features
+        return new_features.squeeze(-1)
 
 
 if __name__ == "__main__":
