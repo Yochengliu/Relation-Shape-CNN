@@ -70,6 +70,12 @@ We have trained a Multi-Scale-Neighborhood part segmentation model in `seg` fold
         
 You can use our model `cls/model_cls_ssn_iter_16218_acc_0.923825.pth` as the checkpoint in `config_ssn_cls.yaml`, and after this voting you will get an accuracy of 92.71% if all things go right.
 
+### Shape part segmentation
+
+    Voting script: voting_evaluate_partseg.py
+        
+You can use our model `seg/model_seg_msn_iter_57585_ins_0.858054_cls_0.841787.pth` as the checkpoint in `config_msn_partseg.yaml`.
+
 ## License
 
 The code is released under MIT License (see LICENSE file for details).
