@@ -11,7 +11,7 @@ __Relation-Shape Convolutional Neural Network for Point Cloud Analysis__ [[arXiv
 ## Citation
 
 If our paper is helpful for your research, please consider citing:   
-
+```BibTex
         @inproceedings{liu2019rscnn,   
             author = {Yongcheng Liu and    
                             Bin Fan and    
@@ -22,7 +22,7 @@ If our paper is helpful for your research, please consider citing:
             pages = {8895--8904},  
             year = {2019}   
         }   
-
+```
 ## Usage: Preparation
 
 ### Requirement
