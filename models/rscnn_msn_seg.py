@@ -138,6 +138,7 @@ class RSCNN_MSN(nn.Module):
         
         l_xyz, l_features = [xyz], [features]
         for i in range(len(self.SA_modules)):
+            print("down", i)
             if i < 5:
                 li_xyz, li_features = self.SA_modules[i](l_xyz[i], l_features[i])
                 if li_xyz is not None:
@@ -151,6 +152,7 @@ class RSCNN_MSN(nn.Module):
         _, global_out2_feat = self.SA_modules[5](l_xyz[3], l_features[3])
         
         for i in range(-1, -(len(self.FP_modules) + 1), -1):
+            print("up", i)
             l_features[i - 1 - 1] = self.FP_modules[i](
                 l_xyz[i - 1 - 1], l_xyz[i - 1], l_features[i - 1 - 1], l_features[i - 1]
             )
