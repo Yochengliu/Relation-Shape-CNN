@@ -1,4 +1,5 @@
 import torch
+torch.backends.cudnn.enabled = False
 import torch.optim as optim
 import torch.optim.lr_scheduler as lr_sched
 import torch.nn as nn

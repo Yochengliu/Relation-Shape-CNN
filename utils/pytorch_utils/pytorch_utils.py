@@ -62,7 +62,9 @@ class RSConv(nn.Module):
         elif self.relation_prior == 2:
             h_xi_xj = torch.cat((h_xi_xj, coord_xi, zero_vec, abs_coord, zero_vec, delta_x, zero_vec), dim = 1)
 
-        import pdb; pdb.set_trace()
+        #try:
+        #    h_xi_xj = self.mapping_func1(h_xi_xj)
+        #except:
         h_xi_xj = self.mapping_func1(h_xi_xj)
         h_xi_xj = self.activation(self.bn_mapping(h_xi_xj))
         h_xi_xj = self.mapping_func2(h_xi_xj)
