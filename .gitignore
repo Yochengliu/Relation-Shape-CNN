@@ -1,0 +1,10 @@
+dataset
+*.pyc
+__pycache__
+.vscode
+*outputs*
+wandb
+logs
+results
+site
+*.DS_Store

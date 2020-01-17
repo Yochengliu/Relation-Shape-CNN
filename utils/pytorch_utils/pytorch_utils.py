@@ -21,7 +21,7 @@ class RSConv(nn.Module):
             self, 
             C_in, 
             C_out,
-            activation = nn.ReLU(inplace=True),
+            activation = nn.ReLU(),
             mapping = None,
             relation_prior = 1,
             first_layer = False
@@ -44,7 +44,6 @@ class RSConv(nn.Module):
             self.xyz_raising = mapping[3]
         
     def forward(self, input): # input: (B, 3 + 3 + C_in, npoint, centroid + nsample)
-        
         x = input[:, 3:, :, :]           # (B, C_in, npoint, nsample+1), input features
         C_in = x.size()[1]
         nsample = x.size()[3]
@@ -62,13 +61,16 @@ class RSConv(nn.Module):
             h_xi_xj = torch.cat((h_xi_xj, coord_xi, abs_coord, delta_x), dim = 1)
         elif self.relation_prior == 2:
             h_xi_xj = torch.cat((h_xi_xj, coord_xi, zero_vec, abs_coord, zero_vec, delta_x, zero_vec), dim = 1)
-        del coord_xi, abs_coord, delta_x
 
-        h_xi_xj = self.mapping_func2(self.activation(self.bn_mapping(self.mapping_func1(h_xi_xj))))
+        #try:
+        #    h_xi_xj = self.mapping_func1(h_xi_xj)
+        #except:
+        h_xi_xj = self.mapping_func1(h_xi_xj)
+        h_xi_xj = self.activation(self.bn_mapping(h_xi_xj))
+        h_xi_xj = self.mapping_func2(h_xi_xj)
         if self.first_layer:
             x = self.activation(self.bn_xyz_raising(self.xyz_raising(x)))
         x = F.max_pool2d(self.activation(self.bn_rsconv(torch.mul(h_xi_xj, x))), kernel_size = (1, nsample)).squeeze(3)   # (B, C_in, npoint)
-        del h_xi_xj
         x = self.activation(self.bn_channel_raising(self.cr_mapping(x)))
         
         return x
@@ -139,7 +141,7 @@ class GloAvgConv(nn.Module):
             self, 
             C_in, 
             C_out, 
-            init=nn.init.kaiming_normal, 
+            init=nn.init.kaiming_normal_, 
             bias = True,
             activation = nn.ReLU(inplace=True)
     ):
@@ -152,7 +154,7 @@ class GloAvgConv(nn.Module):
         
         init(self.conv_avg.weight)
         if bias:
-            nn.init.constant(self.conv_avg.bias, 0)
+            nn.init.constant_(self.conv_avg.bias, 0)
         
     def forward(self, x):
         nsample = x.size()[3]
@@ -198,8 +200,8 @@ class _BNBase(nn.Sequential):
         super().__init__()
         self.add_module(name + "bn", batch_norm(in_size))
 
-        nn.init.constant(self[0].weight, 1.0)
-        nn.init.constant(self[0].bias, 0)
+        nn.init.constant_(self[0].weight, 1.0)
+        nn.init.constant_(self[0].bias, 0)
 
 
 class BatchNorm1d(_BNBase):
@@ -251,7 +253,7 @@ class _ConvBase(nn.Sequential):
         )
         init(conv_unit.weight)
         if bias:
-            nn.init.constant(conv_unit.bias, 0)
+            nn.init.constant_(conv_unit.bias, 0)
 
         if bn:
             if not preact:
@@ -288,7 +290,7 @@ class Conv1d(_ConvBase):
             padding: int = 0,
             activation=nn.ReLU(inplace=True),
             bn: bool = False,
-            init=nn.init.kaiming_normal,
+            init=nn.init.kaiming_normal_,
             bias: bool = True,
             preact: bool = False,
             name: str = ""
@@ -322,7 +324,7 @@ class Conv2d(_ConvBase):
             padding: Tuple[int, int] = (0, 0),
             activation=nn.ReLU(inplace=True),
             bn: bool = False,
-            init=nn.init.kaiming_normal,
+            init=nn.init.kaiming_normal_,
             bias: bool = True,
             preact: bool = False,
             name: str = ""
@@ -356,7 +358,7 @@ class Conv3d(_ConvBase):
             padding: Tuple[int, int, int] = (0, 0, 0),
             activation=nn.ReLU(inplace=True),
             bn: bool = False,
-            init=nn.init.kaiming_normal,
+            init=nn.init.kaiming_normal_,
             bias: bool = True,
             preact: bool = False,
             name: str = ""
@@ -397,7 +399,7 @@ class FC(nn.Sequential):
         if init is not None:
             init(fc.weight)
         if not bn:
-            nn.init.constant(fc.bias, 0)
+            nn.init.constant_(fc.bias, 0)
 
         if preact:
             if bn:

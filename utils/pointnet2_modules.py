@@ -1,13 +1,118 @@
+from typing import *
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-import pointnet2_utils
+import torch_points as tp
 import pytorch_utils as pt_utils
 from typing import List
 import numpy as np
 import time
 import math
+
+class QueryAndGroup(nn.Module):
+    r"""
+    Groups with a ball query of radius
+    Parameters
+    ---------
+    radius : float32
+        Radius of ball
+    nsample : int32
+        Maximum number of points to gather in the ball
+    """
+
+    def __init__(self, radius: float, nsample: int, use_xyz: bool = True):
+        super().__init__()
+        self.radius, self.nsample, self.use_xyz = radius, nsample, use_xyz
+
+    def forward(
+            self,
+            xyz: torch.Tensor,
+            new_xyz: torch.Tensor,
+            features: torch.Tensor = None,
+            fps_idx: torch.IntTensor = None
+    ) -> Tuple[torch.Tensor]:
+        r"""
+        Parameters
+        ----------
+        xyz : torch.Tensor
+            xyz coordinates of the features (B, N, 3)
+        new_xyz : torch.Tensor
+            centriods (B, npoint, 3)
+        features : torch.Tensor
+            Descriptors of the features (B, C, N)
+        Returns
+        -------
+        new_features : torch.Tensor
+            (B, 3 + C, npoint, nsample) tensor
+        """
+
+        idx = tp.ball_query(self.radius, self.nsample, xyz, new_xyz, mode='dense')
+        xyz_trans = xyz.transpose(1, 2).contiguous()
+        grouped_xyz = tp.grouping_operation(
+            xyz_trans, idx
+        )  # (B, 3, npoint, nsample)
+        raw_grouped_xyz = grouped_xyz
+        grouped_xyz -= new_xyz.transpose(1, 2).unsqueeze(-1)
+
+        if features is not None:
+            grouped_features = tp.grouping_operation(features, idx)
+            if self.use_xyz:
+                new_features = torch.cat([raw_grouped_xyz, grouped_xyz, grouped_features],
+                                         dim=1)  # (B, C + 3 + 3, npoint, nsample)
+            else:
+                new_features = grouped_features
+        else:
+            assert self.use_xyz, "Cannot have not features and not use xyz as a feature!"
+            new_features = torch.cat([raw_grouped_xyz, grouped_xyz], dim = 1)
+
+        return new_features
+
+
+class GroupAll(nn.Module):
+    r"""
+    Groups all features
+    Parameters
+    ---------
+    """
+
+    def __init__(self, use_xyz: bool = True):
+        super().__init__()
+        self.use_xyz = use_xyz
+
+    def forward(
+            self,
+            xyz: torch.Tensor,
+            new_xyz: torch.Tensor,
+            features: torch.Tensor = None
+    ) -> Tuple[torch.Tensor]:
+        r"""
+        Parameters
+        ----------
+        xyz : torch.Tensor
+            xyz coordinates of the features (B, N, 3)
+        new_xyz : torch.Tensor
+            Ignored
+        features : torch.Tensor
+            Descriptors of the features (B, C, N)
+        Returns
+        -------
+        new_features : torch.Tensor
+            (B, C + 3, 1, N) tensor
+        """
+
+        grouped_xyz = xyz.transpose(1, 2).unsqueeze(2)
+        if features is not None:
+            grouped_features = features.unsqueeze(2)
+            if self.use_xyz:
+                new_features = torch.cat([grouped_xyz, grouped_features],
+                                         dim=1)  # (B, 3 + C, 1, N)
+            else:
+                new_features = grouped_features
+        else:
+            new_features = grouped_xyz
+
+        return new_features
 
 class _PointnetSAModuleBase(nn.Module):
 
@@ -38,8 +143,8 @@ class _PointnetSAModuleBase(nn.Module):
         new_features_list = []
         xyz_flipped = xyz.transpose(1, 2).contiguous()
         if self.npoint is not None:
-            fps_idx = pointnet2_utils.furthest_point_sample(xyz, self.npoint)  # (B, npoint)
-            new_xyz = pointnet2_utils.gather_operation(xyz_flipped, fps_idx).transpose(1, 2).contiguous()
+            fps_idx = tp.furthest_point_sample(xyz, self.npoint)  # (B, npoint)
+            new_xyz = tp.gather_operation(xyz_flipped, fps_idx).transpose(1, 2).contiguous()
             fps_idx = fps_idx.data
         else:
             new_xyz = None
@@ -82,7 +187,7 @@ class PointnetSAModuleMSG(_PointnetSAModuleBase):
             mlps: List[List[int]],
             use_xyz: bool = True,
             bias = True,
-            init = nn.init.kaiming_normal,
+            init = nn.init.kaiming_normal_,
             first_layer = False,
             relation_prior = 1
     ):
@@ -112,7 +217,7 @@ class PointnetSAModuleMSG(_PointnetSAModuleBase):
                                   stride = (1, 1), bias = bias)
             init(xyz_raising.weight)
             if bias:
-                nn.init.constant(xyz_raising.bias, 0)
+                nn.init.constant_(xyz_raising.bias, 0)
         elif npoint is not None:
             mapping_func1 = nn.Conv2d(in_channels = in_channels, out_channels = math.floor(C_out / 4), kernel_size = (1, 1), 
                                       stride = (1, 1), bias = bias)
@@ -122,14 +227,14 @@ class PointnetSAModuleMSG(_PointnetSAModuleBase):
             init(mapping_func1.weight)
             init(mapping_func2.weight)
             if bias:
-                nn.init.constant(mapping_func1.bias, 0)
-                nn.init.constant(mapping_func2.bias, 0)    
+                nn.init.constant_(mapping_func1.bias, 0)
+                nn.init.constant_(mapping_func2.bias, 0)    
                      
             # channel raising mapping
             cr_mapping = nn.Conv1d(in_channels = C_in if not first_layer else 16, out_channels = C_out, kernel_size = 1, 
                                       stride = 1, bias = bias)
             init(cr_mapping.weight)
-            nn.init.constant(cr_mapping.bias, 0)
+            nn.init.constant_(cr_mapping.bias, 0)
         
         if first_layer:
             mapping = [mapping_func1, mapping_func2, cr_mapping, xyz_raising]
@@ -140,8 +245,8 @@ class PointnetSAModuleMSG(_PointnetSAModuleBase):
             radius = radii[i]
             nsample = nsamples[i]
             self.groupers.append(
-                pointnet2_utils.QueryAndGroup(radius, nsample, use_xyz=use_xyz)
-                if npoint is not None else pointnet2_utils.GroupAll(use_xyz)
+                QueryAndGroup(radius, nsample, use_xyz=use_xyz)
+                if npoint is not None else GroupAll(use_xyz)
             )
             mlp_spec = mlps[i]
             if use_xyz:
@@ -224,12 +329,12 @@ class PointnetFPModule(nn.Module):
             (B, mlp[-1], n) tensor of the features of the unknown features
         """
 
-        dist, idx = pointnet2_utils.three_nn(unknown, known)
+        dist, idx = tp.three_nn(unknown, known)
         dist_recip = 1.0 / (dist + 1e-8)
         norm = torch.sum(dist_recip, dim=2, keepdim=True)
         weight = dist_recip / norm
 
-        interpolated_feats = pointnet2_utils.three_interpolate(
+        interpolated_feats = tp.three_interpolate(
             known_feats, idx, weight
         )
         if unknow_feats is not None:

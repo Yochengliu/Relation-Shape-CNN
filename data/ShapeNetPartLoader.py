@@ -18,7 +18,7 @@ class ShapeNetPart():
     def __init__(self, root, num_points = 2048, split='train', normalize=True, transforms = None):
         self.transforms = transforms
         self.num_points = num_points
-        self.root = root
+        self.root = "/home/thomas/HELIX/research/Relation-Shape-CNN/dataset/shapenet"
         self.catfile = os.path.join(self.root, 'synsetoffset2category.txt')
         self.normalize = normalize
         

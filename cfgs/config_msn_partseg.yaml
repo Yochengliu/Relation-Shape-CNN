@@ -3,7 +3,7 @@ common:
 
     num_points: 2048
     num_classes: 50
-    batch_size: 28
+    batch_size: 12
     
     base_lr: 0.001
     lr_clip: 0.00001
